@@ -20,7 +20,75 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
 {
+        //ball movment
         ball->Left += x;
         ball->Top += y;
+
+        //ball bounce top
+        if (ball->Top <= background->Top) y = -y;
+
+        //ball bounce down
+        if (ball->Top + ball->Height + 5 >= background->Top + background->Height) y = -y;
+
+        //lost point
+        if(ball->Left < left_paddle->Left + left_paddle->Width)
+        {
+            Timer_ball->Enabled = false;
+            ball->Visible = false;
+        }
+
+
 }
 //---------------------------------------------------------------------------
+void __fastcall TForm1::left_upTimer(TObject *Sender)
+{
+        left_paddle->Top -= 10;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::left_downTimer(TObject *Sender)
+{
+        left_paddle->Top += 10;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::right_upTimer(TObject *Sender)
+{
+        right_paddle->Top -= 10;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::right_downTimer(TObject *Sender)
+{
+        right_paddle->Top += 10;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key,
+      TShiftState Shift)
+{
+        //paddles movement (up&down)
+        if (Key == 0x41) left_up->Enabled = true;
+        if (Key == 0x5A) left_down->Enabled = true;
+        if (Key == VK_UP) right_up->Enabled = true;
+        if (Key == VK_DOWN) right_down->Enabled = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key,
+      TShiftState Shift)
+{
+        //paddles stop movement
+        if (Key == 0x41) left_up->Enabled = false;
+        if (Key == 0x5A) left_down->Enabled = false;
+        if (Key == VK_UP) right_up->Enabled = false;
+        if (Key == VK_DOWN) right_down->Enabled = false;
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+
+
