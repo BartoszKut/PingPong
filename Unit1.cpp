@@ -31,13 +31,17 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
         if (ball->Top + ball->Height + 5 >= background->Top + background->Height) y = -y;
 
         //lost point
-        if(ball->Left < left_paddle->Left + left_paddle->Width)
+        if(ball->Left < left_paddle->Left + left_paddle->Width ||
+        ball->Left + ball->Width > right_paddle->Left)
         {
             Timer_ball->Enabled = false;
             ball->Visible = false;
         }
-
-
+        //ball reflection
+        else if (ball->Left >= left_paddle->Left + left_paddle->Width)
+        {
+            if(x>0) x = -x;
+        }
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::left_upTimer(TObject *Sender)

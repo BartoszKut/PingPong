@@ -1,10 +1,13 @@
 object Form1: TForm1
-  Left = -1564
-  Top = 46
-  Width = 1014
-  Height = 525
+  Left = -1260
+  Top = 288
+  AutoScroll = False
   Caption = 'Ping-pong v1.0'
+  ClientHeight = 474
+  ClientWidth = 1175
   Color = clBtnFace
+  UseDockManager = True
+  DockSite = True
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -13,14 +16,18 @@ object Form1: TForm1
   OldCreateOrder = False
   OnKeyDown = FormKeyDown
   OnKeyUp = FormKeyUp
+  DesignSize = (
+    1175
+    474)
   PixelsPerInch = 96
   TextHeight = 13
   object background: TShape
     Left = 0
     Top = 0
-    Width = 998
-    Height = 486
+    Width = 1175
+    Height = 474
     Align = alClient
+    Anchors = [akRight]
     Brush.Color = clGray
   end
   object ball: TImage
@@ -406,10 +413,11 @@ object Form1: TForm1
     Transparent = True
   end
   object right_paddle: TImage
-    Left = 952
+    Left = 1132
     Top = 168
     Width = 22
     Height = 149
+    Anchors = [akTop, akRight]
     AutoSize = True
     Picture.Data = {
       07544269746D6170CA270000424DCA2700000000000036000000280000001600
