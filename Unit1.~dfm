@@ -1,10 +1,10 @@
 object Form1: TForm1
-  Left = -1095
-  Top = 190
+  Left = -1256
+  Top = 178
   AutoScroll = False
   Caption = 'Ping-pong v1.0'
-  ClientHeight = 501
-  ClientWidth = 590
+  ClientHeight = 513
+  ClientWidth = 750
   Color = clBtnFace
   UseDockManager = True
   DockSite = True
@@ -17,25 +17,26 @@ object Form1: TForm1
   OnKeyDown = FormKeyDown
   OnKeyUp = FormKeyUp
   DesignSize = (
-    590
-    501)
+    750
+    513)
   PixelsPerInch = 96
   TextHeight = 13
   object background: TShape
     Left = 0
     Top = 0
-    Width = 590
-    Height = 501
+    Width = 750
+    Height = 513
     Align = alClient
     Anchors = [akRight]
     Brush.Color = clGray
   end
   object ball: TImage
-    Left = 216
-    Top = 384
+    Left = 328
+    Top = 312
     Width = 21
     Height = 21
     AutoSize = True
+    Center = True
     Picture.Data = {
       07544269746D617076050000424D760500000000000036000000280000001500
       0000150000000100180000000000400500000000000000000000000000000000
@@ -413,7 +414,7 @@ object Form1: TForm1
     Transparent = True
   end
   object right_paddle: TImage
-    Left = 547
+    Left = 707
     Top = 168
     Width = 22
     Height = 149
@@ -740,6 +741,38 @@ object Form1: TForm1
       224CB1224CB1224CB1224CB1224CB1224CB1224CB1224CB1224CB1224CB1224C
       B1224CB1224CB1224CB1224CB1224CB1224CB1220000}
     Transparent = True
+  end
+  object p1_win: TButton
+    Left = 208
+    Top = 208
+    Width = 337
+    Height = 73
+    Anchors = []
+    Caption = 'Wygra'#322' gracz nr 1! Jeszcze raz?!'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    Visible = False
+  end
+  object p2_win: TButton
+    Left = 206
+    Top = 209
+    Width = 337
+    Height = 73
+    Anchors = []
+    Caption = 'Wygra'#322' gracz nr 2! Jeszcze raz?!'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    Visible = False
   end
   object Timer_ball: TTimer
     Interval = 25

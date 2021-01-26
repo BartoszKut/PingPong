@@ -84,6 +84,16 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                     if(x>0) x = -x;
                 }
         }
+
+        //players wins
+        if (player_1_points >=3) {
+                p1_win->Visible = true;
+        }
+
+        if (player_2_points >=3) {
+                p2_win->Visible = true;
+        }
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::left_upTimer(TObject *Sender)
