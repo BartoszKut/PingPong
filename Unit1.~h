@@ -33,6 +33,8 @@ __published:	// IDE-managed Components
           TShiftState Shift);
         void __fastcall right_upTimer(TObject *Sender);
         void __fastcall right_downTimer(TObject *Sender);
+        void __fastcall p1_winClick(TObject *Sender);
+        void __fastcall p2_winClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);

@@ -31,8 +31,8 @@ object Form1: TForm1
     Brush.Color = clGray
   end
   object ball: TImage
-    Left = 328
-    Top = 312
+    Left = 368
+    Top = 296
     Width = 21
     Height = 21
     AutoSize = True
@@ -757,6 +757,7 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 0
     Visible = False
+    OnClick = p1_winClick
   end
   object p2_win: TButton
     Left = 206
@@ -773,6 +774,7 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 1
     Visible = False
+    OnClick = p2_winClick
   end
   object Timer_ball: TTimer
     Interval = 25

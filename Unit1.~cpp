@@ -146,9 +146,36 @@ void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key,
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::p1_winClick(TObject *Sender)
+{
+        ball->Left = 50;
+        ball->Top = 50;
 
+        ball->Visible = true;
+        x = 8; y = -8;
+        Timer_ball->Enabled = true;
 
+        p1_win->Visible = false;
 
+        player_1_points = 0;
+        player_2_points = 0;
 
+}
+//---------------------------------------------------------------------------
 
+void __fastcall TForm1::p2_winClick(TObject *Sender)
+{
+        ball->Left = background->Width - 50;
+        ball->Top = 50;
+
+        ball->Visible = true;
+        x = -8; y = -8;
+        Timer_ball->Enabled = true;
+
+        p2_win->Visible = false;
+
+        player_1_points = 0;
+        player_2_points = 0;
+}
+//---------------------------------------------------------------------------
 
