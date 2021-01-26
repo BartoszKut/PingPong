@@ -9,8 +9,8 @@
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
-int x = -10;
-int y = -10;
+int x = -8;
+int y = -8;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
         : TForm(Owner)
@@ -42,21 +42,20 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                  ball->Top > left_paddle->Top - ball->Height/2 &&
                  ball->Top + ball->Height < left_paddle->Top + left_paddle->Height + ball->Height/2)
         {
-                if(x<0) x = -x;
-                /*if (ball->Top + ball->Height <= left_paddle->Top + left_paddle->Height/3) {
+                if (ball->Top + ball->Height <= left_paddle->Top + left_paddle->Height/3) {
                     x = -8;
                     if(x<0) x = -x;
                 }
                 else if (ball->Top > left_paddle->Top + left_paddle->Height/3 &&
                         ball->Top + ball->Height < left_paddle->Top + left_paddle->Height - left_paddle->Height/3) {
-                        x = x+2;
-                        if(x<0) x = -x;
+                    x = x-2;
+                    if(x<0) x = -x;
                 }
+
                 else if (ball->Top >= left_paddle->Top + left_paddle->Height - left_paddle->Height/3) {
                     x = -8;
                     if(x<0) x = -x;
-                }*/
-
+                }
         }
 
         //ball reflection from right paddle
@@ -64,7 +63,20 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                  ball->Top > right_paddle->Top - ball->Height/2 &&
                  ball->Top + ball->Height < right_paddle->Top + right_paddle->Height + ball->Height/2)
         {
-                if(x>0) x = -x;
+                if (ball->Top + ball->Height <= right_paddle->Top + right_paddle->Height/3) {
+                    x = 8;
+                    if(x>0) x = -x;
+                }
+                else if (ball->Top > right_paddle->Top + right_paddle->Height/3 &&
+                        ball->Top + ball->Height < right_paddle->Top + right_paddle->Height - right_paddle->Height/3) {
+                    x = -x-2;
+                    if(x>0) x = -x;
+                }
+
+                else if (ball->Top >= right_paddle->Top + right_paddle->Height - right_paddle->Height/3) {
+                    x = 8;
+                    if(x>0) x = -x;
+                }
         }
 }
 //---------------------------------------------------------------------------

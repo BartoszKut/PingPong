@@ -1,10 +1,10 @@
 object Form1: TForm1
-  Left = 290
-  Top = 295
+  Left = -1095
+  Top = 190
   AutoScroll = False
   Caption = 'Ping-pong v1.0'
   ClientHeight = 501
-  ClientWidth = 927
+  ClientWidth = 590
   Color = clBtnFace
   UseDockManager = True
   DockSite = True
@@ -17,22 +17,22 @@ object Form1: TForm1
   OnKeyDown = FormKeyDown
   OnKeyUp = FormKeyUp
   DesignSize = (
-    927
+    590
     501)
   PixelsPerInch = 96
   TextHeight = 13
   object background: TShape
     Left = 0
     Top = 0
-    Width = 927
+    Width = 590
     Height = 501
     Align = alClient
     Anchors = [akRight]
     Brush.Color = clGray
   end
   object ball: TImage
-    Left = 672
-    Top = 176
+    Left = 216
+    Top = 384
     Width = 21
     Height = 21
     AutoSize = True
@@ -413,7 +413,7 @@ object Form1: TForm1
     Transparent = True
   end
   object right_paddle: TImage
-    Left = 884
+    Left = 547
     Top = 168
     Width = 22
     Height = 149
