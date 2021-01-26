@@ -11,6 +11,8 @@ TForm1 *Form1;
 
 int x = -8;
 int y = -8;
+int player_1_points = 0;
+int player_2_points = 0;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
         : TForm(Owner)
@@ -31,9 +33,13 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
         if (ball->Top + ball->Height + 5 >= background->Top + background->Height) y = -y;
 
         //lost point
-        if(ball->Left + ball->Width <= left_paddle->Left + left_paddle->Width - 10 ||
-        ball->Left + ball->Width >= right_paddle->Left + 10)
-        {
+        if(ball->Left + ball->Width <= left_paddle->Left + left_paddle->Width - 10) {
+                player_2_points++;
+                Timer_ball->Enabled = false;
+                ball->Visible = false;
+        }
+        else if (ball->Left + ball->Width >= right_paddle->Left + 10) {
+            player_1_points++;
             Timer_ball->Enabled = false;
             ball->Visible = false;
         }
