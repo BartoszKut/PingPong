@@ -1,9 +1,9 @@
 object Form1: TForm1
-  Left = 378
-  Top = 232
+  Left = 47
+  Top = 176
   AutoScroll = False
   Caption = 'Ping-pong v1.0'
-  ClientHeight = 555
+  ClientHeight = 533
   ClientWidth = 1052
   Color = clBtnFace
   UseDockManager = True
@@ -18,21 +18,21 @@ object Form1: TForm1
   OnKeyUp = FormKeyUp
   DesignSize = (
     1052
-    555)
+    533)
   PixelsPerInch = 96
   TextHeight = 13
   object background: TShape
     Left = 0
     Top = 0
     Width = 1052
-    Height = 555
+    Height = 533
     Align = alClient
     Anchors = [akRight]
     Brush.Color = clGray
   end
   object ball: TImage
     Left = 528
-    Top = 272
+    Top = 261
     Width = 21
     Height = 21
     Anchors = []
@@ -88,7 +88,7 @@ object Form1: TForm1
   end
   object left_paddle: TImage
     Left = 24
-    Top = 192
+    Top = 181
     Width = 22
     Height = 149
     Anchors = [akLeft]
@@ -417,7 +417,7 @@ object Form1: TForm1
   end
   object right_paddle: TImage
     Left = 1009
-    Top = 192
+    Top = 181
     Width = 22
     Height = 149
     Anchors = [akRight]
@@ -746,7 +746,7 @@ object Form1: TForm1
   end
   object scores_p1: TLabel
     Left = 433
-    Top = 497
+    Top = 477
     Width = 17
     Height = 36
     Anchors = []
@@ -761,7 +761,7 @@ object Form1: TForm1
   end
   object scores_p2: TLabel
     Left = 594
-    Top = 497
+    Top = 477
     Width = 17
     Height = 36
     Anchors = []
@@ -775,10 +775,13 @@ object Form1: TForm1
     Transparent = True
   end
   object information: TLabel
-    Left = 336
-    Top = 224
-    Width = 119
-    Height = 29
+    Left = 245
+    Top = 288
+    Width = 577
+    Height = 89
+    Alignment = taCenter
+    Anchors = []
+    AutoSize = False
     Caption = 'information'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -789,9 +792,26 @@ object Form1: TForm1
     Transparent = True
     Visible = False
   end
+  object how_much_bounces: TLabel
+    Left = 437
+    Top = 38
+    Width = 181
+    Height = 25
+    Anchors = []
+    AutoSize = False
+    Caption = 'how_much_bounces'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
   object p1_win: TButton
-    Left = 359
-    Top = 228
+    Left = 365
+    Top = 233
     Width = 337
     Height = 73
     Anchors = []
@@ -807,8 +827,8 @@ object Form1: TForm1
     OnClick = p1_winClick
   end
   object p2_win: TButton
-    Left = 357
-    Top = 229
+    Left = 367
+    Top = 234
     Width = 337
     Height = 73
     Anchors = []

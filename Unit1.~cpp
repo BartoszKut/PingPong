@@ -13,6 +13,7 @@ int x = -8;
 int y = -8;
 int player_1_points = 0;
 int player_2_points = 0;
+int bounces = 0;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
         : TForm(Owner)
@@ -43,16 +44,20 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
             if(player_2_points < 3){
                 information->Caption = "Punkt zdobywa gracz nr 2! Start za: 2 sek.";
                 information->Visible = true;
+                how_much_bounces->Caption = "Iloœæ odbiæ: " + IntToStr(bounces) ;
+                how_much_bounces->Visible = true;
                 Application->ProcessMessages(); Sleep(1000);
                 information->Caption = "Punkt zdobywa gracz nr 2! Start za: 1 sek.";
                 Application->ProcessMessages(); Sleep(1000);
                 information->Visible = false;
+                how_much_bounces->Visible = false;
 
                 ball->Left = background->Width - 50;
                 ball->Top = 50;
                 ball->Visible = true;
                 x = -8; y = -8;
                 Timer_ball->Enabled = true;
+                bounces = 0;
             }
         }
 
@@ -67,16 +72,20 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
             if(player_1_points < 3){
                 information->Caption = "Punkt zdobywa gracz nr 1! Start za: 2 sek.";
                 information->Visible = true;
+                how_much_bounces->Caption = "Iloœæ odbiæ: " + IntToStr(bounces);
+                how_much_bounces->Visible = true;
                 Application->ProcessMessages(); Sleep(1000);
                 information->Caption = "Punkt zdobywa gracz nr 1! Start za: 1 sek.";
                 Application->ProcessMessages(); Sleep(1000);
                 information->Visible = false;
+                how_much_bounces->Visible = false;
 
                 ball->Left = 50;
                 ball->Top = 50;
                 ball->Visible = true;
                 x = 8; y = -8;
                 Timer_ball->Enabled = true;
+                bounces = 0;
             }
         }
         //ball reflection from left paddle
@@ -89,6 +98,7 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                         if (x < -8) x = x+2;
                         else x = -8;
                         x = -x;
+                        bounces++;
                     }
                 }
                 else if (ball->Top > left_paddle->Top + left_paddle->Height/3 &&
@@ -96,14 +106,24 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                     if(x<0) {
                         x = x-2;
                         x = -x;
+                        bounces++;
                     }
                 }
 
                 else if (ball->Top >= left_paddle->Top + left_paddle->Height - left_paddle->Height/3) {
 
                     if(x<0) {
-                        x = x+2;
+                        if (x < -8) x = x+2;
+                        else x = -8;
                         x = -x;
+                        bounces++;
+                    }
+                }
+
+                else {
+                if(x<0) {
+                        x = -x;
+                        bounces++;
                     }
                 }
         }
@@ -119,6 +139,7 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                         if (x>8) x = x-2;
                         else x = 8;
                         x = -x;
+                        bounces++;
                     }
                 }
                 else if (ball->Top > right_paddle->Top + right_paddle->Height/3 &&
@@ -126,6 +147,7 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                     if(x>0) {
                         x = x+2;
                         x = -x;
+                        bounces++;
                     }
                 }
 
@@ -134,6 +156,13 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                         if (x>8) x = x-2;
                         else x = 8;
                         x = -x;
+                        bounces++;
+                    }
+                }
+                else {
+                if(x>0) {
+                        x = -x;
+                        bounces++;
                     }
                 }
         }
@@ -143,12 +172,16 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                 p1_win->Visible = true;
                 Timer_ball->Enabled = false;
                 ball->Visible = false;
+                how_much_bounces->Caption = "Iloœæ odbiæ: " + IntToStr(bounces);
+                how_much_bounces->Visible = true;
         }
 
         if (player_2_points >=3) {
                 p2_win->Visible = true;
                 Timer_ball->Enabled = false;
                 ball->Visible = false;
+                how_much_bounces->Caption = "Iloœæ odbiæ: " + IntToStr(bounces);
+                how_much_bounces->Visible = true;
         }
 
 }
@@ -219,6 +252,7 @@ void __fastcall TForm1::p1_winClick(TObject *Sender)
         scores_p1->Caption = player_1_points;
         scores_p2->Caption = player_2_points;
 
+        how_much_bounces->Visible = false;
 }
 //---------------------------------------------------------------------------
 
@@ -237,6 +271,8 @@ void __fastcall TForm1::p2_winClick(TObject *Sender)
         player_2_points = 0;
         scores_p1->Caption = player_1_points;
         scores_p2->Caption = player_2_points;
+
+        how_much_bounces->Visible = false;
 }
 //---------------------------------------------------------------------------
 

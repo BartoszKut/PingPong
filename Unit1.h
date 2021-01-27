@@ -27,6 +27,7 @@ __published:	// IDE-managed Components
         TLabel *scores_p1;
         TLabel *scores_p2;
         TLabel *information;
+        TLabel *how_much_bounces;
         void __fastcall Timer_ballTimer(TObject *Sender);
         void __fastcall left_upTimer(TObject *Sender);
         void __fastcall left_downTimer(TObject *Sender);
