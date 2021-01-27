@@ -86,22 +86,16 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
         {
                 if (ball->Top + ball->Height <= left_paddle->Top + left_paddle->Height/3) {
                     x = -8;
-                    //if(y<0) y = -8;
-                    //else y = 8;
                     if(x<0) x = -x;
                 }
                 else if (ball->Top > left_paddle->Top + left_paddle->Height/3 &&
                         ball->Top + ball->Height < left_paddle->Top + left_paddle->Height - left_paddle->Height/3) {
-                    x = x+5;
-                    //if(y<0) y = y+2;
-                    //else y = y-2;
+                    x = x-2;
                     if(x<0) x = -x;
                 }
 
                 else if (ball->Top >= left_paddle->Top + left_paddle->Height - left_paddle->Height/3) {
                     x = -8;
-                    //if(y<0) y = -8;
-                    //else y = 8;
                     if(x<0) x = -x;
                 }
         }
@@ -117,7 +111,7 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                 }
                 else if (ball->Top > right_paddle->Top + right_paddle->Height/3 &&
                         ball->Top + ball->Height < right_paddle->Top + right_paddle->Height - right_paddle->Height/3) {
-                    x = -x-2;
+                    x = x+2;
                     if(x>0) x = -x;
                 }
 
