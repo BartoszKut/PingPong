@@ -102,7 +102,8 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                 else if (ball->Top >= left_paddle->Top + left_paddle->Height - left_paddle->Height/3) {
 
                     if(x<0) {
-                        x = x+2;
+                        if (x < -8) x = x+2;
+                        else x = -8;
                         x = -x;
                     }
                 }
