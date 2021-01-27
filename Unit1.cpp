@@ -80,44 +80,61 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
             }
         }
         //ball reflection from left paddle
-        else if (ball->Left < left_paddle->Left + left_paddle->Width &&
-                 ball->Top > left_paddle->Top - ball->Height/2 &&
-                 ball->Top + ball->Height < left_paddle->Top + left_paddle->Height + ball->Height/2)
+        else if ((ball -> Top > left_paddle -> Top - ball -> Height) &&
+                (ball -> Top < left_paddle -> Top + left_paddle -> Height + ball -> Height) &&
+                (ball -> Left <= left_paddle -> Left + left_paddle -> Width))
         {
                 if (ball->Top + ball->Height <= left_paddle->Top + left_paddle->Height/3) {
-                    x = -8;
-                    if(x<0) x = -x;
+                    if(x<0) {
+                        if (x < -8) x = x+2;
+                        else x = -8;
+                        x = -x;
+                    }
                 }
                 else if (ball->Top > left_paddle->Top + left_paddle->Height/3 &&
                         ball->Top + ball->Height < left_paddle->Top + left_paddle->Height - left_paddle->Height/3) {
-                    x = x-2;
-                    if(x<0) x = -x;
+                    if(x<0) {
+                        x = x-2;
+                        x = -x;
+                    }
                 }
 
                 else if (ball->Top >= left_paddle->Top + left_paddle->Height - left_paddle->Height/3) {
-                    x = -8;
-                    if(x<0) x = -x;
+
+                    if(x<0) {
+                        x = x+2;
+                        x = -x;
+                    }
                 }
         }
 
         //ball reflection from right paddle
-        else if (ball->Left + ball->Width > right_paddle->Left &&
-                 ball->Top > right_paddle->Top - ball->Height/2 &&
-                 ball->Top + ball->Height < right_paddle->Top + right_paddle->Height + ball->Height/2)
+        else if ((ball -> Top > right_paddle -> Top - ball -> Height) &&
+                (ball -> Top < right_paddle -> Top + right_paddle -> Height + ball -> Height) &&
+                (ball -> Left + ball -> Width >= right_paddle -> Left))
         {
                 if (ball->Top + ball->Height <= right_paddle->Top + right_paddle->Height/3) {
-                    x = 8;
-                    if(x>0) x = -x;
+
+                    if(x>0){
+                        if (x>8) x = x-2;
+                        else x = 8;
+                        x = -x;
+                    }
                 }
                 else if (ball->Top > right_paddle->Top + right_paddle->Height/3 &&
                         ball->Top + ball->Height < right_paddle->Top + right_paddle->Height - right_paddle->Height/3) {
-                    x = x+2;
-                    if(x>0) x = -x;
+                    if(x>0) {
+                        x = x+2;
+                        x = -x;
+                    }
                 }
 
                 else if (ball->Top >= right_paddle->Top + right_paddle->Height - right_paddle->Height/3) {
-                    x = 8;
-                    if(x>0) x = -x;
+                    if(x>0) {
+                        if (x>8) x = x-2;
+                        else x = 8;
+                        x = -x;
+                    }
                 }
         }
 
