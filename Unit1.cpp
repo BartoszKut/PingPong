@@ -32,16 +32,52 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
         //ball bounce down
         if (ball->Top + ball->Height + 5 >= background->Top + background->Height) y = -y;
 
-        //lost point
+        //win point by player 2
         if(ball->Left + ball->Width <= left_paddle->Left + left_paddle->Width - 10) {
-                player_2_points++;
-                Timer_ball->Enabled = false;
-                ball->Visible = false;
-        }
-        else if (ball->Left + ball->Width >= right_paddle->Left + 10) {
-            player_1_points++;
+            player_2_points++;
+
+            scores_p2->Caption = player_2_points;
             Timer_ball->Enabled = false;
             ball->Visible = false;
+
+            if(player_2_points < 3){
+                information->Caption = "Punkt zdobywa gracz nr 2! Start za: 2 sek.";
+                information->Visible = true;
+                Application->ProcessMessages(); Sleep(1000);
+                information->Caption = "Punkt zdobywa gracz nr 2! Start za: 1 sek.";
+                Application->ProcessMessages(); Sleep(1000);
+                information->Visible = false;
+
+                ball->Left = background->Width - 50;
+                ball->Top = 50;
+                ball->Visible = true;
+                x = -8; y = -8;
+                Timer_ball->Enabled = true;
+            }
+        }
+
+        //win point by player 1
+        else if (ball->Left + ball->Width >= right_paddle->Left + 10) {
+            player_1_points++;
+
+            scores_p1->Caption = player_1_points;
+            Timer_ball->Enabled = false;
+            ball->Visible = false;
+
+            if(player_1_points < 3){
+                information->Caption = "Punkt zdobywa gracz nr 1! Start za: 2 sek.";
+                information->Visible = true;
+                Application->ProcessMessages(); Sleep(1000);
+                information->Caption = "Punkt zdobywa gracz nr 1! Start za: 1 sek.";
+                Application->ProcessMessages(); Sleep(1000);
+                information->Visible = false;
+
+                ball->Left = 50;
+                ball->Top = 50;
+                ball->Visible = true;
+                x = 8; y = -8;
+                Timer_ball->Enabled = true;
+            }
         }
         //ball reflection from left paddle
         else if (ball->Left < left_paddle->Left + left_paddle->Width &&
@@ -50,16 +86,22 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
         {
                 if (ball->Top + ball->Height <= left_paddle->Top + left_paddle->Height/3) {
                     x = -8;
+                    //if(y<0) y = -8;
+                    //else y = 8;
                     if(x<0) x = -x;
                 }
                 else if (ball->Top > left_paddle->Top + left_paddle->Height/3 &&
                         ball->Top + ball->Height < left_paddle->Top + left_paddle->Height - left_paddle->Height/3) {
-                    x = x-2;
+                    x = x+5;
+                    //if(y<0) y = y+2;
+                    //else y = y-2;
                     if(x<0) x = -x;
                 }
 
                 else if (ball->Top >= left_paddle->Top + left_paddle->Height - left_paddle->Height/3) {
                     x = -8;
+                    //if(y<0) y = -8;
+                    //else y = 8;
                     if(x<0) x = -x;
                 }
         }
@@ -85,13 +127,17 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                 }
         }
 
-        //players wins
-        if (player_1_points >=1) {
+        //players wins game
+        if (player_1_points >=3) {
                 p1_win->Visible = true;
+                Timer_ball->Enabled = false;
+                ball->Visible = false;
         }
 
-        if (player_2_points >=1) {
+        if (player_2_points >=3) {
                 p2_win->Visible = true;
+                Timer_ball->Enabled = false;
+                ball->Visible = false;
         }
 
 }
@@ -159,6 +205,8 @@ void __fastcall TForm1::p1_winClick(TObject *Sender)
 
         player_1_points = 0;
         player_2_points = 0;
+        scores_p1->Caption = player_1_points;
+        scores_p2->Caption = player_2_points;
 
 }
 //---------------------------------------------------------------------------
@@ -176,6 +224,9 @@ void __fastcall TForm1::p2_winClick(TObject *Sender)
 
         player_1_points = 0;
         player_2_points = 0;
+        scores_p1->Caption = player_1_points;
+        scores_p2->Caption = player_2_points;
 }
 //---------------------------------------------------------------------------
+
 
