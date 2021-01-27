@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 47
-  Top = 176
+  Left = 423
+  Top = 275
   AutoScroll = False
   Caption = 'Ping-pong v1.0'
   ClientHeight = 533
