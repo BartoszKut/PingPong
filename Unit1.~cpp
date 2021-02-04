@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "Unit1.h"
+#include <mmsystem.h>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -126,6 +127,7 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                         bounces++;
                     }
                 }
+                PlaySound("sound", HInstance, SND_ASYNC | SND_RESOURCE);
         }
 
         //ball reflection from right paddle

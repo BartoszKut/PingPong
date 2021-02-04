@@ -11,7 +11,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
         {
                 Application->Initialize();
                 Application->CreateForm(__classid(TForm1), &Form1);
-                AnsiString first = "Witaj w grze PingPong";
+                 AnsiString first = "Witaj w grze PingPong";
                 AnsiString second = "Lewy gracz steruje wciskaj¹c klawisze A oraz Z";
                 AnsiString third = "Prawy gracz steruje wciskaj¹c strza³ki w górê i w dó³";
                 AnsiString fourth = "Odbijaj¹c pi³eczkê œrodkiem paletki przyœpieszy ona oraz zmniejszy siê k¹t odbicia.";

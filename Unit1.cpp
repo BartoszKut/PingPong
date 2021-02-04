@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "Unit1.h"
+#include <mmsystem.h>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -99,6 +100,7 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                         else x = -8;
                         x = -x;
                         bounces++;
+                         PlaySound("sound", HInstance, SND_ASYNC | SND_RESOURCE);
                     }
                 }
                 else if (ball->Top > left_paddle->Top + left_paddle->Height/3 &&
@@ -107,6 +109,7 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                         x = x-2;
                         x = -x;
                         bounces++;
+                         PlaySound("sound", HInstance, SND_ASYNC | SND_RESOURCE);
                     }
                 }
 
@@ -117,6 +120,7 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                         else x = -8;
                         x = -x;
                         bounces++;
+                         PlaySound("sound", HInstance, SND_ASYNC | SND_RESOURCE);
                     }
                 }
 
@@ -124,6 +128,7 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
                 if(x<0) {
                         x = -x;
                         bounces++;
+                         PlaySound("sound", HInstance, SND_ASYNC | SND_RESOURCE);
                     }
                 }
         }
